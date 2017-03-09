@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Cálculo de datas </title>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script language="JavaScript" type="text/javascript">
+
+    $(document).ready(function(){        
+        $("#diaHoje").html(formataData(hoje));
+        $("#anterior").html(formataData(tresMesesAntes));
+    });
+    
+    var hoje = new Date();
+    var tresMesesAntes = new Date();    
+    tresMesesAntes.setMonth(hoje.getMonth() - 3);   
+
+    function formataData(data){
+        var dia = new Date(data);
+        var dd = dia.getDate();
+        var mm = dia.getMonth()+1; //January is 0!
+        var yyyy = dia.getFullYear();
+        
+        if(dd<10){
+            dd='0'+dd;
+        }
+
+        if(mm<10){
+            mm='0'+mm;
+        } 
+        var dia = dd+'/'+mm+'/'+yyyy;
+
+        return dia;
+    }   
+
+</script>
+</head>
+
+<body>
+    Hoje é dia <span id="diaHoje"></span> e tres meses antes foi dia <span id="anterior"></span>
+</body>
+</html>
